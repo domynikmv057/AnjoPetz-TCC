@@ -1,14 +1,25 @@
 import { useState } from "react";
 import "./RegisterUser.css";
+import { EmailRegex } from "../../Services/RegexValidator/RegexValidator";
+
 export const RegisterUser = () => {
   const [registerForm, setRegisterForm] = useState();
   const [formValidation, setFormValidation] = useState(true);
   const [identicalPasswords, setIdenticalPasswords] = useState();
+  const [emailValidate, setEmailValidate] = useState();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    setRegisterForm({ ...registerForm, [name]: value });
+    if (name === "email") {
+      if (!EmailRegex.test(value)) {
+        setEmailValidate(false);
+      } else {
+        setEmailValidate(true);
+        setRegisterForm({ ...registerForm, [name]: value });
+      }
+    } else {
+      setRegisterForm({ ...registerForm, [name]: value });
+    }
   };
 
   const handleSubmit = (e) => {
@@ -48,6 +59,11 @@ export const RegisterUser = () => {
                 placeholder="exemple@gmail.com"
                 onChange={handleChange}
               />
+            </p>
+            <p className="error-mensage">
+              {emailValidate === false
+                ? "Insira um email valido (exemple@.com)"
+                : ""}
             </p>
 
             <p>
