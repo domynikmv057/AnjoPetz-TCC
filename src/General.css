@@ -1,0 +1,42 @@
+body {
+  background-color: #f0f0f3;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-primary {
+  width: 100px;
+  height: 40px;
+  margin-left: 5px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  background-color: #5d8bc8;
+}
+
+.btn-secondary {
+  width: 100px;
+  height: 40px;
+  margin-left: 5px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  background-color: #152e7b;
+}
+
+.btn-primary-disabled {
+  width: 100px;
+  height: 40px;
+  margin-left: 5px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  background-color: #b0b3b6;
+}

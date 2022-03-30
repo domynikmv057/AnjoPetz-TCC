@@ -1,0 +1,59 @@
+/* Container principal do component */
+
+.main-login-container {
+  background-color: #ffff;
+  min-width: 300px;
+  padding: 30px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.main-login-container h1 {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+legend {
+  display: none;
+}
+
+/* Container que possui os inputs */
+.input-container {
+}
+
+.input-container input {
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #c7d0d8;
+}
+
+.input-container p {
+  margin: 20px 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container p label {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.title-style {
+  padding-bottom: 10px;
+  border-bottom: 2px solid #152e7b;
+  margin-bottom: 20px;
+}
+
+/* Container dos botoes */
+.btn-login {
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

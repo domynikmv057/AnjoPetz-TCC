@@ -1,0 +1,25 @@
+.register-container {
+  padding: 20px;
+}
+
+.btn-register-container {
+  margin-left: 10px;
+}
+
+.btn-register-container button {
+  width: 100px;
+  height: 40px;
+  margin-left: 5px;
+  border-radius: 10px 10px 0px 0px;
+  font-weight: bold;
+  color: white;
+  border: none;
+}
+
+.btn-normal {
+  background-color: #152e7b;
+}
+
+.btn-active {
+  background-color: #5d8bc8;
+}
