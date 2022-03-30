@@ -1,4 +1,4 @@
-import { ConfigRoutes } from "./Components/Services/Route/ConfigRoutes";
+import { ConfigRoutes } from "./Config/Route/ConfigRoutes";
 
 function App() {
   return (
