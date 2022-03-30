@@ -1,6 +1,8 @@
-import { useState } from "react";
 import "./RegisterUser.css";
+import { useState } from "react";
 import { EmailRegex } from "../../Services/RegexValidator/RegexValidator";
+import { createUserWithEmailAndPassword } from "@firebase/auth"
+import { auth } from "../../Services/Firebase/Firebase.js"
 
 export const RegisterUser = () => {
   const [registerForm, setRegisterForm] = useState();
@@ -22,16 +24,27 @@ export const RegisterUser = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
     console.log(registerForm);
+    try{
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        registerForm.email,
+        registerForm.password
+        )
+        console.log(result);
+        alert("Cadastrado com sucesso")
+    }catch (error) {
+      console.log(error);
+      alert("Alguma coisa deu errado")
+    }
   };
 
   const handleSamePasswords = (e) => {
     const samePasswords = e.target.value;
     console.log(samePasswords);
-    if (samePasswords === registerForm.senha) {
+    if (samePasswords === registerForm.password) {
       setFormValidation(false);
       setIdenticalPasswords(true);
     } else {
@@ -67,25 +80,25 @@ export const RegisterUser = () => {
             </p>
 
             <p>
-              <label htmlFor="senha_register">Senha: </label>
+              <label htmlFor="password_register">Senha: </label>
               <input
-                id="senha_register"
-                name="senha"
+                id="password_register"
+                name="password"
                 required="required"
                 type="password"
-                placeholder="1234"
+                placeholder="Senha"
                 onChange={handleChange}
               />
             </p>
 
             <p>
-              <label htmlFor="confirmSenha_register">Confirmar Senha: </label>
+              <label htmlFor="confirmPassword_register">Confirmar Senha: </label>
               <input
-                id="confirmSenha_register"
-                name="confirmSenha_register"
+                id="confirmPassword_register"
+                name="confirmPassword_register"
                 required="required"
                 type="password"
-                placeholder="1234"
+                placeholder="Confirme a Senha"
                 onChange={handleSamePasswords}
               />
             </p>
