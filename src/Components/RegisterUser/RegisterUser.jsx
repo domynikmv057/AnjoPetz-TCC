@@ -1,14 +1,16 @@
 import "./RegisterUser.css";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { EmailRegex } from "../../Services/RegexValidator/RegexValidator";
-import { createUserWithEmailAndPassword } from "@firebase/auth"
-import { auth } from "../../Services/Firebase/Firebase.js"
+import { createUserWithEmailAndPassword } from "@firebase/auth";
+import { auth } from "../../Services/Firebase/Firebase.js";
+import { NotificationContext } from "../../Notifications/NotificationProvider";
 
 export const RegisterUser = () => {
   const [registerForm, setRegisterForm] = useState();
   const [formValidation, setFormValidation] = useState(true);
   const [identicalPasswords, setIdenticalPasswords] = useState();
   const [emailValidate, setEmailValidate] = useState();
+  const dispatch = useContext(NotificationContext);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,23 +29,36 @@ export const RegisterUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(registerForm);
-    try{
+    try {
       const result = await createUserWithEmailAndPassword(
         auth,
         registerForm.email,
         registerForm.password
-        )
-        console.log(result);
-        alert("Cadastrado com sucesso")
-    }catch (error) {
+      );
+      console.log(result);
+      dispatch({
+        type: "ADD_NOTIFICATION",
+        payload: {
+          id: 1,
+          type: "SUCCESS",
+          message: `O email: ${result.user.email} foi cadastrado com sucesso`,
+        },
+      });
+    } catch (error) {
       console.log(error);
-      alert("Alguma coisa deu errado")
+      dispatch({
+        type: "ADD_NOTIFICATION",
+        payload: {
+          id: 1,
+          type: "ERROR",
+          message: `Nao foi possivel cadastrar: ( ${error} `,
+        },
+      });
     }
   };
 
   const handleSamePasswords = (e) => {
     const samePasswords = e.target.value;
-    console.log(samePasswords);
     if (samePasswords === registerForm.password) {
       setFormValidation(false);
       setIdenticalPasswords(true);
@@ -62,7 +77,7 @@ export const RegisterUser = () => {
         <fieldset>
           <legend>Dados de login</legend>
           <section className="input-container">
-            <p>
+            <p className="form-container">
               <label htmlFor="email_register">Email: </label>
               <input
                 id="email_register"
@@ -79,7 +94,7 @@ export const RegisterUser = () => {
                 : ""}
             </p>
 
-            <p>
+            <p className="form-container">
               <label htmlFor="password_register">Senha: </label>
               <input
                 id="password_register"
@@ -91,8 +106,10 @@ export const RegisterUser = () => {
               />
             </p>
 
-            <p>
-              <label htmlFor="confirmPassword_register">Confirmar Senha: </label>
+            <p className="form-container">
+              <label htmlFor="confirmPassword_register">
+                Confirmar Senha:{" "}
+              </label>
               <input
                 id="confirmPassword_register"
                 name="confirmPassword_register"
