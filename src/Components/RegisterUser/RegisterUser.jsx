@@ -1,5 +1,5 @@
 import "./RegisterUser.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { EmailRegex } from "../../Services/RegexValidator/RegexValidator";
 import { createUserWithEmailAndPassword } from "@firebase/auth";
 import { auth } from "../../Services/Firebase/Firebase.js";
@@ -36,6 +36,7 @@ export const RegisterUser = () => {
         registerForm.password
       );
       console.log(result);
+      //Dispatch é um context que uso para chamar notificação
       dispatch({
         type: "ADD_NOTIFICATION",
         payload: {
@@ -46,6 +47,8 @@ export const RegisterUser = () => {
       });
     } catch (error) {
       console.log(error);
+      //Dispatch é um context que uso para chamar notificação
+
       dispatch({
         type: "ADD_NOTIFICATION",
         payload: {
