@@ -9,7 +9,7 @@ export const Login = () => {
         <fieldset>
           <legend>Dados de login</legend>
           <section className="input-container">
-            <p>
+            <p className="form-container">
               <label htmlFor="email_login">Email: </label>
               <input
                 id="email_login"
@@ -20,7 +20,7 @@ export const Login = () => {
               />
             </p>
 
-            <p>
+            <p className="form-container">
               <label htmlFor="senha_login">Senha: </label>
               <input
                 id="senha_login"
