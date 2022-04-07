@@ -2,7 +2,7 @@ import "./Register.css";
 import { Login } from "../../Components/Login/Login";
 import { useState } from "react";
 import { RegisterUser } from "../../Components/RegisterUser/RegisterUser";
-import { NotificationProvaider } from "../../Notifications/NotificationProvider";
+import { NotificationProvaider } from "../../contexts/Notifications/NotificationProvider";
 
 export const Register = () => {
   const [loginValue, setLoginValue] = useState(0);

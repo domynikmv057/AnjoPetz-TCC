@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { EmailRegex } from "../../Services/RegexValidator/RegexValidator";
 import { createUserWithEmailAndPassword } from "@firebase/auth";
 import { auth } from "../../Services/Firebase/Firebase.js";
-import { NotificationContext } from "../../Notifications/NotificationProvider";
+import { NotificationContext } from "../../contexts/Notifications/NotificationProvider";
 
 export const RegisterUser = () => {
   const [registerForm, setRegisterForm] = useState();
@@ -28,7 +28,6 @@ export const RegisterUser = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(registerForm);
     try {
       const result = await createUserWithEmailAndPassword(
         auth,

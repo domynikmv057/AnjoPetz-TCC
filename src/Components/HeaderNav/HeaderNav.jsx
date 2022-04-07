@@ -1,11 +1,14 @@
 import "./HeaderNav.css";
+import logo from "../../Assets/LogoAnjoPetz.png";
 
 export const HeaderNav = () => {
   return (
     <header>
-      <section>
-        <img src="logo" alt="#" />
-        <h1> AnjoPetz </h1>
+      <section className="logo-container">
+        <img src={logo} alt="logo" width={"60px"} />
+        <h1>
+          Anjo<span>Petz</span>
+        </h1>
       </section>
       <section className="nav-container">
         <ul>

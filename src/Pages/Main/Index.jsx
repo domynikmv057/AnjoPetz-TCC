@@ -1,3 +1,7 @@
 export const Main = () => {
-  return;
+  return (
+    <>
+      <h1>Hellow Main</h1>
+    </>
+  );
 };
