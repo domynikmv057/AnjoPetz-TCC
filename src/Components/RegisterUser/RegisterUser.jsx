@@ -34,7 +34,6 @@ export const RegisterUser = () => {
         registerForm.email,
         registerForm.password
       );
-      console.log(result);
       //Dispatch é um context que uso para chamar notificação
       dispatch({
         type: "ADD_NOTIFICATION",
@@ -45,7 +44,6 @@ export const RegisterUser = () => {
         },
       });
     } catch (error) {
-      console.log(error);
       //Dispatch é um context que uso para chamar notificação
 
       dispatch({

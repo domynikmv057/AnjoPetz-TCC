@@ -1,7 +1,12 @@
 import "./HeaderNav.css";
 import logo from "../../Assets/LogoAnjoPetz.png";
+import { useContext } from "react";
+import AuthContext from "../../contexts/Auth/Auth";
+import { NavBar } from "./SidebarNavigation/NavBar";
 
 export const HeaderNav = () => {
+  const UserContext = useContext(AuthContext);
+  const AuthUser = UserContext.user;
   return (
     <header>
       <section className="logo-container">
@@ -11,15 +16,7 @@ export const HeaderNav = () => {
         </h1>
       </section>
       <section className="nav-container">
-        <ul>
-          <li> Quem Somos </li>
-          <li> Adotar </li>
-          <li> Ajudar </li>
-        </ul>
-        <div className="btn-container">
-          <button className="btn-secondary"> Cadastrar </button>
-          <button className="btn-secondary"> Entrar </button>
-        </div>
+        <NavBar />
       </section>
     </header>
   );

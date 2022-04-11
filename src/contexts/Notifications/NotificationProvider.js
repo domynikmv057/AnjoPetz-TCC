@@ -19,8 +19,8 @@ export const NotificationProvaider = (props) => {
   return (
     <NotificationContext.Provider value={dispatch}>
       <div className="notification-wrapper">
-        {state.map((note) => {
-          return <Notification dispatch={dispatch} key={note.id} {...note} />;
+        {state.map((note, index) => {
+          return <Notification dispatch={dispatch} key={index} {...note} />;
         })}
       </div>
       {props.children}

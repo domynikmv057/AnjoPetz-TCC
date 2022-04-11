@@ -1,37 +1,24 @@
+import { onAuthStateChanged } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
+import { auth } from "../../Services/Firebase/Firebase";
 
 const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState({
-    nome: "",
-    sobrenome: "",
-    email: "",
-    token: "",
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(null);
+      }
+    });
   });
-  const authUser = localStorage.getItem("Token") || false;
-
-  //   useEffect(() => {
-  //     const token = localStorage.getItem("Token") || false;
-  //     console.log(token);
-
-  //     if (token !== false) {
-  //       setAuthUser(true);
-  //     } else {
-  //       setAuthUser(false);
-  //     }
-  //   }, []);
-
-  const Loguin = () => {
-    const response = { email: "1234@gmail.com", password: "1234" };
-
-    return response;
-  };
 
   return (
-    <AuthContext.Provider value={{ signed: true, user, setUser, authUser }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
   );
 };
 

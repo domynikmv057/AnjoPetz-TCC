@@ -1,5 +1,5 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { createContext, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import AuthContext from "../../contexts/Auth/Auth";
 import { NotificationContext } from "../../contexts/Notifications/NotificationProvider";
 import { auth } from "../../Services/Firebase/Firebase";
@@ -8,17 +8,11 @@ import { EmailRegex } from "../../Services/RegexValidator/RegexValidator";
 import "./Login.css";
 
 export const Login = () => {
-  const context = useContext(AuthContext);
+  const UserContext = useContext(AuthContext);
   const [emailValidate, setEmailValidate] = useState();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useContext(NotificationContext);
-
-  const contextTest = async () => {
-    console.log(context);
-
-    context.setUser(" EU CONSEGUI ");
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -55,7 +49,6 @@ export const Login = () => {
         email.email,
         password.password
       );
-      console.log(result);
       dispatch({
         type: "ADD_NOTIFICATION",
         payload: {
@@ -64,11 +57,7 @@ export const Login = () => {
           message: `Bem vindo ${result.user.email}`,
         },
       });
-      console.log(result._tokenResponse.idToken);
       LocalStorageSaveToken(result._tokenResponse.idToken);
-
-      context.setAuthUser(true);
-      console.log(context);
     } catch (error) {
       dispatch({
         type: "ADD_NOTIFICATION",
