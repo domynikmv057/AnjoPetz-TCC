@@ -38,7 +38,6 @@ function App() {
     <div className="App">
       <Router>
         <HeaderNav />
-
         <Routes>
           <Route
             path="/"
@@ -48,7 +47,6 @@ function App() {
               </PrivateRoute>
             }
           />
-
           <Route
             path="/sobre-nos"
             element={
@@ -57,25 +55,24 @@ function App() {
               </PrivateRoute>
             }
           />
-
           <Route
             path="/adotar"
             element={
               <PrivateRoute redirectTo="/registrar">
+                {" "}
                 <Adopt />
               </PrivateRoute>
             }
           />
-
           <Route
             path="/registrar"
             element={
               <PrivateRouteLogin redirectTo="/">
+                {" "}
                 <Register />
               </PrivateRouteLogin>
             }
           />
-          {/* <Route path="/registrar" element={<Register />} /> */}
         </Routes>
       </Router>
     </div>
