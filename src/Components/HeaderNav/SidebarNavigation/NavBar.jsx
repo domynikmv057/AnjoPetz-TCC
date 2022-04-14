@@ -76,10 +76,6 @@ export const NavBar = () => {
               )}
             </li>
           </ul>
-
-          <div>
-            <h1>MENU USUARIO</h1>
-          </div>
         </nav>
       </IconContext.Provider>
     </>

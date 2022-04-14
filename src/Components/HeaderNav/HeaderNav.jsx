@@ -1,12 +1,8 @@
 import "./HeaderNav.css";
-import logo from "../../Assets/LogoAnjoPetz.png";
-import { useContext } from "react";
-import AuthContext from "../../contexts/Auth/Auth";
+import logo from "../../Assets/LogoAnjoPetz v2.png";
 import { NavBar } from "./SidebarNavigation/NavBar";
 
 export const HeaderNav = () => {
-  const UserContext = useContext(AuthContext);
-  const AuthUser = UserContext.user;
   return (
     <header>
       <section className="logo-container">

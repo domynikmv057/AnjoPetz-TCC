@@ -11,7 +11,6 @@ import {
 import { useContext } from "react";
 import { AboutUs } from "./Pages/AboutUs/AboutUs";
 import { Adopt } from "./Pages/Adopt/Adopt";
-import { Help } from "./Pages/Help/Help";
 import { Register } from "./Pages/Register/Register";
 import { Main } from "./Pages/Main/Index";
 

@@ -53,7 +53,7 @@ export const Notification = (props) => {
         props.type === "SUCCESS" ? "success" : "error"
       } ${exit ? "exit" : ""} `}
     >
-      <p>{props.message}</p>
+      <p>{props.message.toUpperCase()}</p>
       <div className={"bar"} style={{ width: `${width}%` }} />
     </div>
   );

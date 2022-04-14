@@ -1,9 +1,6 @@
-import React, { useContext, useState } from "react";
-import * as IOIcons from "react-icons/io";
+import React from "react";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import * as FiIcons from "react-icons/fi";
-import AuthContext from "../../../contexts/Auth/Auth";
 
 export const SidebarData = [
   {
@@ -24,10 +21,4 @@ export const SidebarData = [
     icons: <FaIcons.FaDog />,
     cName: "nav-text",
   },
-  // {
-  //   title: "Ajudar",
-  //   path: "/ajuda",
-  //   icons: <FiIcons.FiHelpCircle />,
-  //   cName: "nav-text",
-  // },
 ];
